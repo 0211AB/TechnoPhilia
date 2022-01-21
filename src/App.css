@@ -3,6 +3,12 @@
 :root{
   --blue:#0188DF;
   --black:#354046;
+
+  --first-color: #12192C;
+  --text-color: #8590AD;
+  --big-font-size: 2rem;
+  --normal-font-size: 0.938rem;
+  --smaller-font-size: 0.875rem;
 }
 
 *{

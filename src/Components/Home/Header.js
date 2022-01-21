@@ -25,9 +25,9 @@ const Header = () => {
 
             <nav className={navClasses}>
                 <ul>
-                    <li><Link to="/">HealthCare Facilities</Link></li>
-                    <li><Link to='/'>Symptoms</Link></li>
-                    <li><Link to='/'>contact us</Link></li>
+                    <li><Link to="/facilities">HealthCare Facilities</Link></li>
+                    <li><Link to='/symptoms'>Symptoms</Link></li>
+                    <li><Link to='/contact-us'>contact us</Link></li>
                 </ul>
             </nav>
 
