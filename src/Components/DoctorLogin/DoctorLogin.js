@@ -1,5 +1,5 @@
 import React from 'react';
-import loginPic from '../../images/login.svg'
+import { Link } from 'react-router-dom';
 
 import './DoctorLogin.css'
 
@@ -20,6 +20,7 @@ const DoctorLogin = () => {
           <input type="password" placeholder="Password" />
         </div>
         <button className="button-form">Login As Doctor</button>
+        <Link to="/signup/doctor" className='signup-link'>Don't have an account ? Click to sign up</Link>
       </form>
     </div>
     
