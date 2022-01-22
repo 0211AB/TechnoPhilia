@@ -3,6 +3,7 @@
 :root{
   --blue:#0188DF;
   --black:#354046;
+  --turqoise:#c6f6f4;
 
   --first-color: #12192C;
   --text-color: #8590AD;
@@ -35,10 +36,6 @@ html{
 
 body{
   overflow-x: hidden;
-}
-
-section{
-  overflow: hidden;
 }
 
 .button{

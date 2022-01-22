@@ -113,7 +113,7 @@ input {
     .bg-img{
         background-position:initial;
     }
-    
+
     .login-page{
         display:flex;
         flex-direction: column;
