@@ -1,40 +1,40 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 
-import { Link } from 'react-router-dom';
 
+import { Link } from 'react-router-dom';
 import './Facilities.css'
-import FacilitiesBox from './FacilitiesBox';
 
 const Facilities = () => {
-  const [latitude, setLatitude] = useState(22.5726)
-  const [longitude, setLongitude] = useState(88.3639)
+  var data
+  const [lat, setLat] = useState(0)
+  const [lon, setLon] = useState(0)
   const location = useRef()
+  const [url, setUrl] = useState()
 
-  const getPlacesData = async (location) => {
-    try {
-      const data = await axios.get(`https://forward-reverse-geocoding.p.rapidapi.com/v1/search`, {
-        params: {
-          q: location||'kolkata', 'accept-language': 'en','countrycodes':'in'
-        },
-        headers: {
-          'x-rapidapi-host': 'forward-reverse-geocoding.p.rapidapi.com',
-          'x-rapidapi-key': '7449b52200msh1221ff45cc1eb7ap10d0c2jsn7f19c18f3385'
-        }
-      });
-      setLongitude(data?.data[0]?.lon||22.5726)
-      setLatitude(data?.data[0]?.lat||88.3639)
+  useEffect(async () => {
 
-    } catch (error) {
-      console.log(error);
-    }
+    navigator?.geolocation?.getCurrentPosition((position) => {
+      setLat(position.coords.latitude)
+      setLon(position.coords.longitude)
+    });
+
+    data = await axios.get(`https://forward-reverse-geocoding.p.rapidapi.com/v1/reverse?lat=${lat}&lon=${lon}&zoom=10`, {
+      headers: {
+        'x-rapidapi-host': 'forward-reverse-geocoding.p.rapidapi.com',
+        'x-rapidapi-key': '7449b52200msh1221ff45cc1eb7ap10d0c2jsn7f19c18f3385',
+        'Access-Control-Allow-Origin': '*'
+      }
+    })
+
+    setUrl(`https://maps.google.com/maps/embed/v1/place?q=${data.data.display_name||'Kolkata'}&key=AIzaSyB933ANy5iPjo3MpN9zNYztWeVcqy2KIY8&zoom=15`)
+
+
+  }, [lat, lon])
+
+  const changeHandler = () => {
+    setUrl(`https://maps.google.com/maps/embed/v1/search?q=${location?.current?.value || data.data.display_name}&key=AIzaSyB933ANy5iPjo3MpN9zNYztWeVcqy2KIY8&zoom=15`)
   }
-
-  const changeHandler = async () => {
-    setTimeout(()=>{getPlacesData(location.current.value)},1200)
-  }
-
-  const url = `https://www.google.com/maps/embed/v1/search?center=${latitude},${longitude}&q=hospital&zoom=14&key=AIzaSyB933ANy5iPjo3MpN9zNYztWeVcqy2KIY8`
 
   return <>
     <header className="header">
@@ -46,20 +46,9 @@ const Facilities = () => {
       </form>
 
     </header>
-
-    <div className='container facilities-container'>
-      <div id='map'>
-        <iframe loading="lazy" src={url}></iframe>
-      </div>
-      <section className="packages" id="packages">
-        <h1 className="text-centered">Nearby HeathCare Facilities  </h1>
-        <div className="box-container">
-          <FacilitiesBox />
-          <FacilitiesBox />
-          <FacilitiesBox />
-          <FacilitiesBox />
-        </div>
-      </section>
+    <h1 className='text-centered'>Nearby HealthCare Facilities</h1>
+    <div id='map'>
+      <iframe id="gmap_canvas" src={url}></iframe>
     </div>
 
   </>;

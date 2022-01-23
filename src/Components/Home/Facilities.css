@@ -1,3 +1,5 @@
+@import '~maplibre-gl/dist/maplibre-gl.css';
+
 .header {
     background-color:#cfdeff;
     padding: 2rem 8%;
@@ -93,98 +95,19 @@
       margin:2rem 0;
   }
 
-  .packages{
-      max-height: 85vh;
-      overflow-y: auto;
-  }
-
-  .packages .box-container{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
-    gap:1.5rem;
-    padding:0 5rem;
-}
-
-.packages .box-container .box{
-    background:#e0e0e0;
-    border-radius: .5rem;
-    box-shadow: #e0e0e0;
-}
-
-.packages .box-container .box .image{
-    height:25rem;
-    width: 100%;
-    padding:1.5rem;
-    position: relative;
-}
-
-.packages .box-container .box .image img{
-    height:100%;
-    width: 100%;
-    object-fit: cover;
-    border-radius: .5rem;
-}
-
-.packages .box-container .box .image h3{
-    position: absolute;
-    top:2.5rem; left:2.5rem;
-    font-size: 2rem;
-    color:#fff;
-    background: rgba(0,0,0,.5);
-    border-radius: .5rem;
-    font-weight: lighter;
-    padding:.5rem 1.5rem;
-}
-
-.packages .box-container .box .image h3 i{
-    color:var(--orange);
-}
-
-.packages .box-container .box .content{
-    padding:1.5rem;
-    padding-top: 0;
-}
-
-.packages .box-container .box .content .price{
-    font-weight: 600;
-    color:var(--text-color-1);
-    font-size: 2.5rem;
-}
-
-.packages .box-container .box .content .price span{
-    font-weight: lighter;
-    color:var(--text-color-2);
-    font-size: 1.5rem;
-    text-decoration: line-through;
-}
-
-.packages .box-container .box .content p{
-    font-size: 1.5rem;
-    padding:.5rem 0;
-    color:var(--text-color-2);
-    line-height: 1.7;
-}
 
 #map{
     display: flex;
     justify-content: center;
     align-items: center;
+    min-height:78vh;
 }
 
 iframe{
-  width:50vw;
-  height:80%;
+    height:78vh;
+    width:80vw;
 }
 
-@media (max-width:1000px){
-    .facilities-container{
-        flex-direction: column;
-    }
-
-    #map{
-        display:none ;
-    }
-}
   @media (max-width:900px){
     .header {
         flex-direction: column;
@@ -210,4 +133,3 @@ iframe{
         padding:0 2.5rem;
     }
 }
-
