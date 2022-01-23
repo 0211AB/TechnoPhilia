@@ -1,42 +1,48 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useRef, useState } from 'react';
+import axios from 'axios';
 
 import { Link } from 'react-router-dom';
-import { FaSearch } from 'react-icons/fa'
 
 import './Facilities.css'
 import FacilitiesBox from './FacilitiesBox';
 
 const Facilities = () => {
-  const [latitude, setLatitude] = useState(0)
-  const [longitude, setLongitude] = useState(0)
-  const [input, setInput] = useState(null)
+  const [latitude, setLatitude] = useState(22.5726)
+  const [longitude, setLongitude] = useState(88.3639)
+  const location = useRef()
 
-  const onButtonClick = () => {
-    axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURI(inputRef.current.value)}&key=AIzaSyDOUyJnlIwclbsyXghNp0x2Cz2ro221jvg`)
+  const getPlacesData = async (location) => {
+    try {
+      const data = await axios.get(`https://forward-reverse-geocoding.p.rapidapi.com/v1/search`, {
+        params: {
+          q: location||'kolkata', 'accept-language': 'en','countrycodes':'in'
+        },
+        headers: {
+          'x-rapidapi-host': 'forward-reverse-geocoding.p.rapidapi.com',
+          'x-rapidapi-key': '7449b52200msh1221ff45cc1eb7ap10d0c2jsn7f19c18f3385'
+        }
+      });
+      setLongitude(data?.data[0]?.lon||22.5726)
+      setLatitude(data?.data[0]?.lat||88.3639)
 
-  };
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
-  useEffect(() => {
-    navigator.geolocation.getCurrentPosition((pos) => {
+  const changeHandler = async () => {
+    setTimeout(()=>{getPlacesData(location.current.value)},1200)
+  }
 
-      setLatitude(pos.coords.latitude)
-      setLongitude(pos.coords.longitude)
-    })
-
-  }, [])
-
-  const inputRef = useRef(null);
-
-  const url = `https://www.google.com/maps/embed/v1/search?center=${latitude},${longitude}&q=hospital+dispensary+clinic&zoom=14&key=AIzaSyB933ANy5iPjo3MpN9zNYztWeVcqy2KIY8`
+  const url = `https://www.google.com/maps/embed/v1/search?center=${latitude},${longitude}&q=hospital&zoom=14&key=AIzaSyB933ANy5iPjo3MpN9zNYztWeVcqy2KIY8`
 
   return <>
     <header className="header">
 
-      <Link to='/' className="logo">{input}HealthCare</Link>
+      <Link to='/' className="logo">HealthCare</Link>
 
-      <form action="" className="search-form">
-        <input type="search" ref={inputRef} placeholder="Search For Nearby Healthcare Facilities..." id="search-box" />
-        <button className='btn' onClick={onButtonClick}><FaSearch></FaSearch></button>
+      <form className="search-form">
+        <input type="search" onChange={changeHandler} ref={location} placeholder="Search For Nearby Healthcare Facilities..." id="search-box" />
       </form>
 
     </header>

@@ -7,7 +7,7 @@ import PatientMain from './Components/PatientMain/PatientMain'
 import DoctorLogin from './Components/DoctorLogin/DoctorLogin'
 import DoctorMain from './Components/DoctorMain/DoctorMain'
 import Facilities from './Components/Home/Facilities'
-import PatientSignup from './PatientSignup/PatientSignup'
+import PatientSignup from './Components/PatientSignup/PatientSignup'
 import DoctorSignup from './Components/DoctorLogin/DoctorSignup/DoctorSignup'
 
 import './App.css'
