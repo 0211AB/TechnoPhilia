@@ -48,7 +48,7 @@ const Facilities = () => {
     </header>
     <h1 className='text-centered'>Nearby HealthCare Facilities</h1>
     <div id='map'>
-      <iframe id="gmap_canvas" src={url}></iframe>
+      <iframe title='map' src={url}></iframe>
     </div>
 
   </>;

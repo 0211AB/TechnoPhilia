@@ -100,12 +100,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height:78vh;
+    padding:0 1rem;
 }
 
 iframe{
     height:78vh;
-    width:80vw;
+    width:100vw;
+    border-radius:3rem;
 }
 
   @media (max-width:900px){

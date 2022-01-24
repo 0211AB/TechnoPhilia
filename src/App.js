@@ -9,8 +9,10 @@ import DoctorMain from './Components/DoctorMain/DoctorMain'
 import Facilities from './Components/Home/Facilities'
 import PatientSignup from './Components/PatientSignup/PatientSignup'
 import DoctorSignup from './Components/DoctorLogin/DoctorSignup/DoctorSignup'
+import SymptomChecker from './Components/SymptomChecker/SymptomChecker'
 
 import './App.css'
+
 
 export const App = () => {
     return (
@@ -23,6 +25,7 @@ export const App = () => {
             <Route path='/facilities' element={<Facilities />}></Route>
             <Route path="/signup/patient" element={<PatientSignup/>}></Route>
             <Route path='/signup/doctor' element={<DoctorSignup/>}></Route>
+            <Route path='/symptoms' element={<SymptomChecker/>}></Route>
         </Routes>
     )
 }
