@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-const validator = require('validator')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
@@ -95,7 +94,7 @@ PatientSchema.methods.generateAuthToken = async function () {
     try {
         if (this.tokens.length > 1)
             this.tokens.splice(0, 1)
-        const token = jwt.sign({ email: this.email }, process.env.JWT_SECRET_KEY)
+        const token = jwt.sign({ healthId: this.healthId }, process.env.JWT_SECRET_KEY)
         this.tokens.push({ token: token })
         return token
     }
