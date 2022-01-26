@@ -55,42 +55,38 @@
   .contact .row form .inputBox input, .contact .row form textarea {
     padding: 1.2rem 1.4rem;
     font-size: 1.6rem;
-    color: #777;
+    color: #fff;
     background: #334;
     margin: .7rem 0;
     border: 0.2rem solid black;
     border-radius:1.2rem;  
   }
   
-  .contact .row form .inputBox input:focus, .contact .row form textarea:focus {
-    color: #fff;
+  .alert-success{
+    width:100%;
+    font-size: 2.5rem;
+    text-align: center;
+    text-transform: uppercase;
+    border-radius: 1.2rem;
   }
-  
-  .contact .row form .inputBox input:focus::-webkit-input-placeholder, .contact .row form textarea:focus::-webkit-input-placeholder {
-    color: #fff;
-  }
-  
-  .contact .row form .inputBox input:focus:-ms-input-placeholder, .contact .row form textarea:focus:-ms-input-placeholder {
-    color: #fff;
-  }
-  
-  .contact .row form .inputBox input:focus::-ms-input-placeholder, .contact .row form textarea:focus::-ms-input-placeholder {
-    color: #fff;
-  }
-  
-  .contact .row form .inputBox input:focus::placeholder, .contact .row form textarea:focus::placeholder {
-    color: #fff;
-  }
-  
   .contact .row form textarea {
     width: 100%;
-    height: 15rem;
+    height: 25rem;
     resize: none;
   }
 
-  
+@media (max-width:700px){
+  .contact{
+    padding:10rem 5rem;
+  }
+}
+
 @media (max-width: 450px) {
-    .contact .row form .inputBox input {
-        width: 100%;
-      }
+  .contact .row form .inputBox input {
+      width: 100%;
+    }
+
+    .contact{
+      padding:10rem 1rem;
+    }
 }
