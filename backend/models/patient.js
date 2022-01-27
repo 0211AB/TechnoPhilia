@@ -8,6 +8,10 @@ const PatientSchema = new mongoose.Schema({
         trim: true,
         required: true,
     },
+    healthId: {
+        type: String,
+        unique: true
+    },
     address: {
         type: String,
         trim: true,
@@ -30,17 +34,13 @@ const PatientSchema = new mongoose.Schema({
         type: String,
         trim: true,
         lowercase: true,
-        validate(value) {
-            if (!validator.isEmail(value)) {
-                throw new Error("Invalid email")
-            }
-        },
         required: true,
         unique: true
     },
     phoneNumber: {
         type: String,
         required: true,
+        unique: true
     },
     gaurdianDetails: {
         type: String,
@@ -50,7 +50,8 @@ const PatientSchema = new mongoose.Schema({
         type: String,
         required: true,
         minlength: 12,
-        maxlength: 12
+        maxlength: 12,
+        unique: true
     },
     bloodGroup: {
         type: String,
@@ -61,9 +62,11 @@ const PatientSchema = new mongoose.Schema({
     },
     height: {
         type: String,
+        required: true
     },
     weight: {
         type: String,
+        required: true
     },
     familyHistory: {
         type: String,

@@ -6,7 +6,7 @@ const Patient = require('../models/patient')
 const auth = require('../middleware/auth')
 const { v4: uuidv4 } = require('uuid');
 
-router.post('patient/signup', async (req, res) => {
+router.post('/patient/signup', async (req, res) => {
     try {
         console.log(req.body);
         const body = { ...req.body, "healthId": uuidv4().split('-')[4] }
@@ -23,14 +23,14 @@ router.post('patient/signup', async (req, res) => {
 
 })
 
-router.post('patient/login', async (req, res) => {
+router.post('/patient/login', async (req, res) => {
     try {
         const password = req.body.password
         const healthId = req.body.healthId
 
         const patient = await Patient.findOne({ healthId })
         if (!patient)
-            res.status(404).json({ "Error": "Patient not found" })
+            res.status(400).json({ "Error": "Invalid credentials" })
         else {
             const isPasswordValid = await bcrypt.compare(password, patient.password)
             console.log(isPasswordValid)
@@ -56,14 +56,14 @@ router.post('patient/login', async (req, res) => {
 
 })
 
-router.get('patient/logout', auth, async (req, res) => {
+router.get('/patient/logout', auth, async (req, res) => {
     try {
 
         const healthId = req.healthId
 
         const patient = await Patient.findOne({ healthId })
         if (!patient)
-            res.status(404).json({ "Error": "patient not found" })
+            res.status(404).json({ "Error": "Invalid Credentials" })
         else {
 
             patient.tokens = []
