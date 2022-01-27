@@ -4,11 +4,10 @@ input {
     font-family: "Poppins", sans-serif;
   }
 
-  .bg-img{
+  .bg-img-doctor{
     padding-top: 5rem;
-    background:url('../../images/login.svg');
+    background:url('../../images/Medical\ prescription-amico.svg');
     background-repeat: no-repeat;
-    background-position:left;
     backdrop-filter:initial;
   }
 
@@ -23,7 +22,7 @@ input {
     justify-content: center;
   }
   
-  form {
+  .sign-in-form {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -31,7 +30,7 @@ input {
     overflow: hidden;
   }
   
-  form.sign-in-form {
+  .sign-in-form {
     z-index: 2;
   }
   
@@ -106,14 +105,15 @@ input {
     font-weight: 500;
 }
 
+.signup-link{
+  font-size: 1.5rem;
+}
+
   @media (max-width: 870px) {
     .signin-signup {
       width: 100%;
     }
-    .bg-img{
-        background-position:initial;
-    }
-
+    
     .login-page{
         display:flex;
         flex-direction: column;
@@ -127,7 +127,7 @@ input {
   }
   
   @media (max-width: 570px) {
-    form {
+    .sign-in-form {
       padding: 0 1.5rem;
     }
   }
