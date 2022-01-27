@@ -28,7 +28,7 @@ export const App = () => {
             <Route path='/login/patient' element={<PatientLogin />}></Route>
             <Route path='/login/doctor' element={<DoctorLogin />}> </Route>
             <Route path='/doctors' element={authCtx.isLoggedIn ? <DoctorMain /> : <Navigate to='/login/doctor' />}></Route>
-            <Route path='/patients' element={authCtx.isLoggedIn ? <PatientMain /> : <Navigate to='/login/patient' />}></Route>
+            <Route path='/patient/:hid' element={authCtx.isLoggedIn ? <PatientMain /> : <Navigate to='/login/patient' />}></Route>
             <Route path='/facilities' element={<Facilities />}></Route>
             <Route path="/signup/patient" element={<PatientSignup />}></Route>
             <Route path='/signup/doctor' element={<DoctorSignup />}></Route>
