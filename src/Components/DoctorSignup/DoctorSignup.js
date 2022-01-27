@@ -1,13 +1,12 @@
 import React from 'react';
-import './PatientSignup.css'
+import logo from '../../images/doctor-signup.svg'
+import logo2 from '../../images/doctor-signup-2.svg'
 import { Link } from 'react-router-dom';
-import logo from '../../images/personal1.svg'
-import logo2 from '../../images/med.svg'
 
-const PatientSignup = () => {
+const DoctorSignup = () => {
   return <>
     <div className="page-content">
-      <div className='text-centered-login'>SignUp As Patient!</div>
+      <div className='text-centered-login'>SignUp As Doctor!</div>
       <div className="form-v1-content">
         <form className="form-register">
 
@@ -29,8 +28,8 @@ const PatientSignup = () => {
 
                   <div className="form-holder">
                     <fieldset>
-                      <legend>Father/Spouse Name</legend>
-                      <input type="text" className="form-control" id="last-name" name="last-name" placeholder="Father's Name" required />
+                      <legend>Address</legend>
+                      <input type="text" className="form-control" id="last-name" name="last-name" placeholder="Address" required />
                     </fieldset>
                   </div>
                 </div>
@@ -54,8 +53,8 @@ const PatientSignup = () => {
                 <div className="form-row">
                   <div className="form-holder">
                     <fieldset>
-                      <legend>Aadhar Number</legend>
-                      <input type="text" className="form-control" id="aadhar" name="aadhar" placeholder="12 digit Aadhar Number" required />
+                      <legend>Registration Number</legend>
+                      <input type="text" className="form-control" id="aadhar" name="aadhar" placeholder="Medical Registration Number" required />
                     </fieldset>
                   </div>
 
@@ -70,8 +69,8 @@ const PatientSignup = () => {
                 <div className="form-row">
                   <div className="form-holder">
                     <fieldset>
-                      <legend>Address</legend>
-                      <input type="text" className="form-control" id="aadhar" name="aadhar" placeholder="Address" required />
+                      <legend>password</legend>
+                      <input type="password" className="form-control" id="aadhar" name="aadhar" placeholder="enter a password" required />
                     </fieldset>
                   </div>
 
@@ -87,63 +86,45 @@ const PatientSignup = () => {
           </section>
           <section className='form-section2'>
             <div className="inner2">
-               <div className='details'>
+              <div className='details'>
                 <div className="form-row">
                   <div className="form-holder">
                     <fieldset>
-                      <legend>Height</legend>
-                      <input type="number" className="form-control" id="first-name" name="first-name" placeholder="Height in cm" required />
+                      <legend>College of Graduation</legend>
+                      <input type="text" className="form-control" id="first-name" name="first-name" placeholder="College from where you graduated" required />
                     </fieldset>
                   </div>
 
                   <div className="form-holder">
                     <fieldset>
-                      <legend>Weight</legend>
-                      <input type="number" className="form-control" id="last-name" name="last-name" placeholder="Weight in kg" required />
+                      <legend>Year of graduation</legend>
+                      <input className="form-control" type="number" min="1900" max="2022" step="1"   placeholder="year of graduation" required />
                     </fieldset>
                   </div>
                 </div>
 
                 <div className="form-row">
                   <div className="form-holder form-holder-2">
-                      <fieldset>
-                      <legend>Identification Mark</legend>
-                      <input type="text" className="form-control" id="phone" name="phone" placeholder="Please mention any birthmark/scar" required />
+                    <fieldset>
+                      <legend>Speciality(if any)</legend>
+                      <input type="text" className="form-control" id="phone" name="phone" placeholder="mention the field of speciality" required />
                     </fieldset>
                   </div>
                   <div className="form-holder">
                     <fieldset>
-                      <legend>Family Medical History</legend>
-                      <input type="text" className="form-control" id="aadhar" name="aadhar" placeholder="Family Medical History(if any)" required />
+                      <legend>Clinics/Hospitals</legend>
+                      <input type="text" className="form-control" id="aadhar" name="aadhar" placeholder="Enter all the clinics  and/or hospitals visiting" required />
                     </fieldset>
                   </div>
                 </div>
 
-                <div className="form-row">
-                  <div className="form-holder">
-                    <fieldset>
-                      <legend>Blood Group</legend>
-                      <input type="text" className="form-control" id="aadhar" name="aadhar" placeholder="Enter your blood group" required />
-                    </fieldset>
-                  </div>
-                </div>
-
-                <div className="form-row">
-                  <div className="form-holder">
-                    <fieldset>
-                      <legend>Password</legend>
-                      <input type="text" className="form-control" id="aadhar" name="aadhar" placeholder="Please create a password" required />
-                    </fieldset>
-                  </div>
-                </div>
                 <div className="form-row btn-patient-row">
-                <input type='submit' className='btn btn-patient'/>
-                <Link to="/signup/doctor" className='signup-link'>SignUp As doctor</Link>
+                  <input type='submit' className='btn btn-patient' />
+                  <Link to="/signup/patient" className='signup-link'>SignUp as Patient</Link>
                 </div>
               </div>
               <div className="wizard-header">
-                <h3 className="heading heading-light">Medical Data</h3>
-                <p className='text-centered-p' >Please enter your medical Information.</p>
+                <h3 className="heading heading-light">Educational Qualifications</h3>
                 <img src={logo2} />
               </div>
             </div>
@@ -154,4 +135,4 @@ const PatientSignup = () => {
   </>;
 };
 
-export default PatientSignup;
+export default DoctorSignup;

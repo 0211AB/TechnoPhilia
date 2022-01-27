@@ -4,7 +4,8 @@
 	margin:  0 auto;
 	display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: center;  
+    background-color: #e8f4f8;
 }
 
 .form-v1-content   {
@@ -145,7 +146,7 @@
         flex-direction: column;
     }
     .form-v1-content{
-        margin:20% 0;
+        margin:5% 0;
     }
 }
 

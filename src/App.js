@@ -8,7 +8,7 @@ import DoctorLogin from './Components/DoctorLogin/DoctorLogin'
 import DoctorMain from './Components/DoctorMain/DoctorMain'
 import Facilities from './Components/Home/Facilities'
 import PatientSignup from './Components/PatientSignup/PatientSignup'
-import DoctorSignup from './Components/DoctorLogin/DoctorSignup/DoctorSignup'
+import DoctorSignup from './Components/DoctorSignup/DoctorSignup'
 import SymptomChecker from './Components/SymptomChecker/SymptomChecker'
 import ContactUs from './Components/ContactUs/ContactUs'
 
