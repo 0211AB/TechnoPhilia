@@ -5,8 +5,9 @@ const router = new express.Router()
 const Patient = require('../models/patient')
 const auth = require('../middleware/auth')
 
-router.post('/signup', async (req, res) => {
+router.post('patient/signup', async (req, res) => {
     try {
+        console.log(req.body);
         var patient = new Patient(req.body)
         const token = await patient.generateAuthToken()
         const saved_patient = await patient.save()
@@ -15,12 +16,12 @@ router.post('/signup', async (req, res) => {
         res.status(201).json(saved_patient)
     }
     catch (e) {
-        res.status(404).json(e)
+        res.status(400).json(e)
     }
 
 })
 
-router.post('/login', async (req, res) => {
+router.post('patient/login', async (req, res) => {
     try {
         const password = req.body.password
         const healthId = req.body.healthId
@@ -53,7 +54,7 @@ router.post('/login', async (req, res) => {
 
 })
 
-router.get('/logout', auth, async (req, res) => {
+router.get('patient/logout', auth, async (req, res) => {
     try {
 
         const healthId = req.healthId

@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
+const validator =require('express-validator')
 
 const DoctorSchema = new mongoose.Schema({
     name: {
@@ -14,7 +15,7 @@ const DoctorSchema = new mongoose.Schema({
         required: true,
     },
     dob: {
-        type: Date,
+        type: String,
         required: true
     },
     gender: {
@@ -30,30 +31,31 @@ const DoctorSchema = new mongoose.Schema({
         type: String,
         trim: true,
         lowercase: true,
-        validate(value) {
-            if (!validator.isEmail(value)) {
-                throw new Error("Invalid email")
-            }
-        },
         required: true,
         unique: true
     },
     phoneNumber: {
         type: String,
         required: true,
+        unique:true
     },
-    healthId: {
+    registrationNumber: {
         type: String,
         required: true,
-        minlength: 10,
-        maxlength: 10
+        unique:true
     },
     clinics: {
         type: String,
-        required: true,
     },
-    identifcationMark: {
+    speciality: {
         type: String,
+    },
+    gradYear: {
+        type: String,
+    },
+    college: {
+        type: String,
+        required: true
     },
     tokens: [{
         token: {
@@ -67,13 +69,6 @@ DoctorSchema.pre("save", async function (next) {
     if (!this.isModified('password')) return next()
 
     this.password = await bcrypt.hash(this.password, 10)
-    next()
-})
-
-DoctorSchema.pre("save", async function (next) {
-    if (!this.isModified('aadharNumber')) return next()
-
-    this.aadharNumber = await bcrypt.hash(this.aadharNumber, 10)
     next()
 })
 
