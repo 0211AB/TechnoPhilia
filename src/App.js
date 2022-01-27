@@ -1,5 +1,5 @@
-import React from 'react'
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, Navigate } from 'react-router-dom'
+import { useContext } from 'react'
 
 import Home from './Components/Home/Home'
 import PatientLogin from './Components/PatientLogin/PatientLogin'
@@ -12,24 +12,29 @@ import DoctorSignup from './Components/DoctorSignup/DoctorSignup'
 import SymptomChecker from './Components/SymptomChecker/SymptomChecker'
 import ContactUs from './Components/ContactUs/ContactUs'
 
+import AuthContext from './Store/auth-context';
+
 import './App.css'
+import React from 'react'
 
 
 
 export const App = () => {
+    const authCtx = useContext(AuthContext);
+
     return (
         <Routes>
             <Route path='/' element={<Home />}></Route>
             <Route path='/login/patient' element={<PatientLogin />}></Route>
             <Route path='/login/doctor' element={<DoctorLogin />}> </Route>
-            <Route path='/doctors' element={<DoctorMain />}></Route>
-            <Route path='/patients' element={<PatientMain />}></Route>
+            <Route path='/doctors' element={authCtx.isLoggedIn ? <DoctorMain /> : <Navigate to='/login/doctor' />}></Route>
+            <Route path='/patients' element={authCtx.isLoggedIn ? <PatientMain /> : <Navigate to='/login/patient' />}></Route>
             <Route path='/facilities' element={<Facilities />}></Route>
             <Route path="/signup/patient" element={<PatientSignup />}></Route>
             <Route path='/signup/doctor' element={<DoctorSignup />}></Route>
             <Route path='/symptoms' element={<SymptomChecker />}></Route>
             <Route path='/contact-us' element={<ContactUs />}></Route>
-        </Routes>
+        </Routes >
     )
 }
 

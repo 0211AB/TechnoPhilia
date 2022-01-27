@@ -4,16 +4,18 @@ const express = require('express')
 const router = new express.Router()
 const Patient = require('../models/patient')
 const auth = require('../middleware/auth')
+const { v4: uuidv4 } = require('uuid');
 
 router.post('patient/signup', async (req, res) => {
     try {
         console.log(req.body);
-        var patient = new Patient(req.body)
+        const body = { ...req.body, "healthId": uuidv4().split('-')[4] }
+        var patient = new Patient(body)
         const token = await patient.generateAuthToken()
         const saved_patient = await patient.save()
         console.log(saved_patient)
 
-        res.status(201).json(saved_patient)
+        res.status(201).json(token)
     }
     catch (e) {
         res.status(400).json(e)

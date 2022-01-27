@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
+import AuthContext from '../../Store/auth-context'
 import logo from '../../images/doctor-signup.svg'
 import logo2 from '../../images/doctor-signup-2.svg'
 import { Link, useNavigate } from 'react-router-dom'
 
 const DoctorSignup = () => {
+  const authCtx = useContext(AuthContext);
+
   const [name, setName] = useState('')
   const [address, setAddress] = useState('')
   const [email, setEmail] = useState('')
@@ -78,9 +81,11 @@ const DoctorSignup = () => {
       if (datares.code === 11000) {
         alert(`${JSON.stringify(datares.keyValue)} aldready exists!!`)
       }
+
       console.log(datares)
 
       if (res.status === 201) {
+        authCtx.login(datares);
         navigate('/doctors')
       }
     }
@@ -187,7 +192,6 @@ const DoctorSignup = () => {
                         value={rno}
                         minLength={5}
                         maxLength={5}
-                        pattern='^[A-Za-z]{2}[0-9]{3}\z'
                         placeholder="Enter 5 digit Medical Registration Number"
                         required />
                     </fieldset>

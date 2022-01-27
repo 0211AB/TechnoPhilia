@@ -22,25 +22,25 @@ router.post('/doctor/signup', async (req, res) => {
 router.post('/doctor/login', async (req, res) => {
     try {
         const password = req.body.password
-        const healthId = req.body.healthId
+        const registrationNumber = req.body.registrationNumber
 
-        const doctor = await Doctor.findOne({ healthId })
+        const doctor = await Doctor.findOne({ registrationNumber })
         if (!doctor)
-            res.status(404).json({ "Error": "Doctor not found" })
+            res.status(400).json({ "Error": "Invalid Credentials" })
         else {
             const isPasswordValid = await bcrypt.compare(password, doctor.password)
             console.log(isPasswordValid)
 
             if (isPasswordValid) {
-                console.log(Doctor.tokens)
-                const token = await Doctor.generateAuthToken()
-                const saved_Doctor = await Doctor.save()
+                console.log(doctor.tokens)
+                const token = await doctor.generateAuthToken()
+                const saved_Doctor = await doctor.save()
                 console.log(saved_Doctor)
 
-                res.status(200).json(saved_Doctor)
+                res.status(200).json(token)
             }
             else {
-                res.status(400).json({ "Message": 'Incorrect Credentials' })
+                res.status(400).json({ "Error": 'Incorrect Credentials' })
             }
 
         }
@@ -55,9 +55,9 @@ router.post('/doctor/login', async (req, res) => {
 router.get('/doctor/logout', auth, async (req, res) => {
     try {
 
-        const healthId = req.healthId
+        const registrationNumber = req.registrationNumber
 
-        const doctor = await Doctor.findOne({ healthId })
+        const doctor = await Doctor.findOne({ registrationNumber })
         if (!doctor)
             res.status(404).json({ "Error": "Doctor not found" })
         else {
