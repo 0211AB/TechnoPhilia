@@ -20,7 +20,6 @@ const Home = () => {
                     </div>
 
                     <div className="col-md-6 pl-md-5 content">
-                        <h1>NAME OF APP</h1>
                         <br></br>
                         <h1><span>stay</span> safe, <span>stay</span> healthy.</h1>
                         <br></br>

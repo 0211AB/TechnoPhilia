@@ -10,7 +10,7 @@ const ContactUs = () => {
     return <>
         <header className='header-contact-us'>
             <div className="container">
-                <Link to='/' className="logo"><span>H</span>ealth<span>C</span>are</Link>
+                <Link to='/' className="logo"><span>H</span>ealth<span>V</span>ault</Link>
                 <nav className='nav'>
                     <ul>
                         <li><Link to="/facilities">Connect With Us</Link></li>

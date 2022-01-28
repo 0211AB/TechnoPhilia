@@ -27,7 +27,7 @@ const Facilities = () => {
       }
     })
 
-    setUrl(`https://maps.google.com/maps/embed/v1/place?q=${data.data.display_name||'Kolkata'}&key=AIzaSyB933ANy5iPjo3MpN9zNYztWeVcqy2KIY8&zoom=15`)
+    setUrl(`https://maps.google.com/maps/embed/v1/place?q=${data.data.display_name || 'Kolkata'}&key=AIzaSyB933ANy5iPjo3MpN9zNYztWeVcqy2KIY8&zoom=15`)
 
 
   }, [lat, lon])
@@ -39,7 +39,7 @@ const Facilities = () => {
   return <>
     <header className="header">
 
-      <Link to='/' className="logo">HealthCare</Link>
+      <Link to='/' className="logo"><span>H</span>ealth<span>V</span>ault</Link>
 
       <form className="search-form">
         <input type="search" onChange={changeHandler} ref={location} placeholder="Search For Nearby Healthcare Facilities..." id="search-box" />

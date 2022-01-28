@@ -21,7 +21,7 @@ const Header = () => {
 
         <div className="container">
 
-            <Link to='/' className="logo"><span>H</span>ealth<span>C</span>are</Link>
+            <Link to='/' className="logo"><span>H</span>ealth<span>V</span>ault</Link>
 
             <nav className={navClasses}>
                 <ul>
