@@ -49,8 +49,6 @@ const PatientSchema = new mongoose.Schema({
     aadharNumber: {
         type: String,
         required: true,
-        minlength: 12,
-        maxlength: 12,
         unique: true
     },
     bloodGroup: {

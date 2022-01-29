@@ -24,7 +24,9 @@ router.post('/patient/signup', async (req, res) => {
 router.post('/patient/login', async (req, res) => {
     try {
         const password = req.body.password
-        const healthId = req.body.healthId
+        const healthId = req.body.healthId.toLowerCase()
+
+        console.log(healthId)
 
         const patient = await Patient.findOne({ healthId })
         if (!patient)
@@ -37,12 +39,11 @@ router.post('/patient/login', async (req, res) => {
                 console.log(patient.tokens)
                 const token = await patient.generateAuthToken()
                 const saved_patient = await patient.save()
-                console.log(saved_patient)
 
-                res.status(200).json(saved_patient)
+                res.status(200).json({ token, "hid": saved_patient.healthId })
             }
             else {
-                res.status(400).json({ "Message": 'Incorrect Credentials' })
+                res.status(400).json({ "Error": 'Incorrect Credentials' })
             }
 
         }
@@ -68,6 +69,35 @@ router.get('/patient/logout', auth, async (req, res) => {
             await patient.save()
 
             res.status(200).json({ "Message": "Logged Out succesfully!!" })
+
+        }
+    }
+    catch (e) {
+        res.status(404).json(e)
+    }
+})
+
+router.get('/patient/:hId', auth, async (req, res) => {
+    try {
+
+        const healthId = req.params.hId
+        console.log(healthId)
+
+        const patient = await Patient.findOne({ healthId })
+        if (!patient)
+            res.status(404).json({ "Error": "Invalid Credentials" })
+        else {
+            res.status(200).json({
+                'name': patient.name,
+                'healthId': patient.healthId,
+                'address': patient.address,
+                'dob': patient.dob,
+                'email': patient.email,
+                'number': patient.phoneNumber,
+                'bloodGrp': patient.bloodGroup,
+                'height': patient.height,
+                'weight': patient.weight
+            })
 
         }
     }

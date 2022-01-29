@@ -12,7 +12,7 @@
     width: 90%;
     max-width: 35rem;
     height: 20rem;
-    margin: 0 auto;
+    margin: 0 5rem;
     perspective: 600px;
   }
   
@@ -39,16 +39,25 @@
     position: absolute;
     backface-visibility: hidden;
     transform-style: preserve-3d;
+    background-color: var(--dark-blue);  
+    border-radius: 2rem;
+    box-shadow: -15px 20px 20px rgba(22, 4, 74, 0.45);
   }
   
   .card__front {
     padding: 0 2rem;
+   
+  }
+
+  .card-row{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
   }
   
   .card__logo {
-    width: 7rem;
-    height: 7rem;
-    margin-top: 1rem;
+    width: 12rem;
+    height: 12rem;
   }
   
   .card__number {
@@ -110,19 +119,20 @@
   
   .card__signature {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
     height: 4.5rem;
     background: var(--white);
-    margin: 2rem 6rem 0 2rem;
+    margin: 2rem;
     padding-right: 1rem;
   }
   
-  .card__cvv,
+  
   .card__cvv-number,
   .card__info {
     font-family: "Open Sans", sans-serif;
     font-weight: 600;
+    text-transform: lowercase;
   }
   
   .card__cvv,
@@ -135,7 +145,8 @@
   }
   
   .card__info {
-    font-size: 0.7rem;
+    font-size: 1rem;
     padding: 1.5rem 2rem;
+    text-align: center;
     color: var(--white);
   }

@@ -10,7 +10,6 @@ const PatientLogin = () => {
 
   const [hid, sethid] = useState('')
   const [pwd, setPwd] = useState('')
-  const [aadhar, setaadhar] = useState('')
   const [data, setData] = useState(null)
 
   const navigate = useNavigate()
@@ -19,16 +18,13 @@ const PatientLogin = () => {
     sethid(e.target.value)
   }
 
-  const aadharChangeHandler = (e) => {
-    setaadhar(e.target.value)
-  }
-
   const pwdChangeHandler = (e) => {
     setPwd(e.target.value)
   }
 
   useEffect(() => {
     const sendData = async () => {
+    
       const res = await fetch('http://localhost:8000/patient/login',
         {
           method: 'POST',
@@ -39,15 +35,14 @@ const PatientLogin = () => {
         })
 
       const dataRes = await res.json();
-      console.log(dataRes)
 
       if (res.status === 400) {
         alert(`${JSON.stringify(dataRes.Error)}`)
       }
 
       if (res.status === 200) {
-        authCtx.login(dataRes);
-        navigate('/patients')
+        authCtx.login(dataRes.token);
+        navigate(`/patient/${dataRes.hid}`)
       }
     }
 
@@ -61,8 +56,7 @@ const PatientLogin = () => {
     e.preventDefault()
     setData({
       password: pwd,
-      healthId: hid,
-      aadharNumber: aadhar
+      healthId: hid
     })
   }
 
@@ -70,7 +64,7 @@ const PatientLogin = () => {
   return <>
     <header className='header-login'>
       <div className="container">
-        <Link to='/' className="logo"><span>H</span>ealth<span>C</span>are</Link>
+        <Link to='/' className="logo"><span>H</span>ealth<span>V</span>ault</Link>
       </div>
     </header>
     <div className="container login-page bg-img-patient">
@@ -86,16 +80,6 @@ const PatientLogin = () => {
               placeholder="Enter HealthId"
               onChange={hidChangeHandler}
               required />
-          </div>
-          <div className="input-field">
-            <i className="fas fa-user"></i>
-            <input type="text"
-              value={aadhar}
-              minLength={12}
-              maxLength={12}
-              onChange={aadharChangeHandler}
-              required
-              placeholder="Aadhaar Number" />
           </div>
           <div className="input-field">
             <i className="fas fa-lock"></i>
