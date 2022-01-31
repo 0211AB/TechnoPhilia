@@ -11,6 +11,7 @@ import PatientSignup from './Components/PatientSignup/PatientSignup'
 import DoctorSignup from './Components/DoctorSignup/DoctorSignup'
 import SymptomChecker from './Components/SymptomChecker/SymptomChecker'
 import ContactUs from './Components/ContactUs/ContactUs'
+import MedData from './Components/MedData/MedData'
 
 import AuthContext from './Store/auth-context';
 
@@ -34,6 +35,7 @@ export const App = () => {
             <Route path='/signup/doctor' element={<DoctorSignup />}></Route>
             <Route path='/symptoms' element={<SymptomChecker />}></Route>
             <Route path='/contact-us' element={<ContactUs />}></Route>
+            <Route path='/med-data/:id' element={<MedData />}></Route>
         </Routes >
     )
 }

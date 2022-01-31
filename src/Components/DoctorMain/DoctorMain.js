@@ -23,6 +23,8 @@ const DoctorMain = () => {
     setPwd(e.target.value)
   }
 
+  const [pData, setpData] = useState()
+
   const [data, setData] = useState({})
 
   useEffect(() => {
@@ -49,12 +51,14 @@ const DoctorMain = () => {
     fetchData()
   }, [])
 
+
   const submitHandler = (e) => {
     e.preventDefault()
-    setData({
+    setpData({
       password: pwd,
       healthId: hid
     })
+    navigate(`/med-data/${hid}`)
   }
 
 
@@ -86,6 +90,7 @@ const DoctorMain = () => {
           <img src={DoctorMainImg} alt='' />
         </div>
       </div>
+
 
       <div className='doctor-main'>
         <div className="form-container-doctor">
