@@ -44,6 +44,10 @@ const DoctorSchema = new mongoose.Schema({
         required: true,
         unique:true
     },
+    cityofPractice: {
+        type: String,
+        required: true,
+    },
     clinics: {
         type: String,
     },

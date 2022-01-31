@@ -26,8 +26,6 @@ router.post('/patient/login', async (req, res) => {
         const password = req.body.password
         const healthId = req.body.healthId.toLowerCase()
 
-        console.log(healthId)
-
         const patient = await Patient.findOne({ healthId })
         if (!patient)
             res.status(400).json({ "Error": "Invalid credentials" })
@@ -81,7 +79,6 @@ router.get('/patient/:hId', auth, async (req, res) => {
     try {
 
         const healthId = req.params.hId
-        console.log(healthId)
 
         const patient = await Patient.findOne({ healthId })
         if (!patient)

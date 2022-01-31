@@ -19,6 +19,7 @@ const DoctorSignup = () => {
   const [gradyr, setGradyr] = useState('')
   const [speciality, setSpeciality] = useState('')
   const [clinics, setClinics] = useState('')
+  const [city, setcity] = useState('')
   const [data, setData] = useState(null)
 
   const navigate = useNavigate()
@@ -59,6 +60,9 @@ const DoctorSignup = () => {
   const clinicChangeHandler = (e) => {
     setClinics(e.target.value)
   }
+  const cityChangeHandler = (e) => {
+    setcity(e.target.value)
+  }
 
   const pwdChangeHandler = (e) => {
     setPwd(e.target.value)
@@ -85,8 +89,8 @@ const DoctorSignup = () => {
       console.log(datares)
 
       if (res.status === 201) {
-        authCtx.login(datares);
-        navigate('/doctors')
+        authCtx.login(datares.token);
+        navigate(`/doctor/${datares.rno}`)
       }
     }
 
@@ -111,6 +115,7 @@ const DoctorSignup = () => {
       college: college,
       gradYr: gradyr,
       speciality: speciality,
+      cityofPractice: city
     })
   }
 
@@ -289,6 +294,17 @@ const DoctorSignup = () => {
                         onChange={clinicChangeHandler}
                         placeholder="Enter all the clinics and/or hospitals visiting"
                       />
+                    </fieldset>
+                  </div>
+                  <div className="form-holder">
+                    <fieldset>
+                      <legend>City Of Practice</legend>
+                      <input type="text"
+                        className="form-control"
+                        value={city}
+                        placeholder="enter the city of practice"
+                        onChange={cityChangeHandler}
+                        required />
                     </fieldset>
                   </div>
                 </div>

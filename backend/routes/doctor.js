@@ -11,7 +11,7 @@ router.post('/doctor/signup', async (req, res) => {
         const token = await doctor.generateAuthToken()
         const saved_Doctor = await doctor.save()
 
-        res.status(201).json(token)
+        res.status(201).json({token,'rno':saved_Doctor.registrationNumber})
     }
     catch (e) {
         res.status(404).json(e)
@@ -23,6 +23,8 @@ router.post('/doctor/login', async (req, res) => {
     try {
         const password = req.body.password
         const registrationNumber = req.body.registrationNumber
+
+        console.log(password,registrationNumber)
 
         const doctor = await Doctor.findOne({ registrationNumber })
         if (!doctor)
@@ -37,7 +39,7 @@ router.post('/doctor/login', async (req, res) => {
                 const saved_Doctor = await doctor.save()
                 console.log(saved_Doctor)
 
-                res.status(200).json(token)
+                res.status(200).json({ token, 'regnNo': saved_Doctor.registrationNumber })
             }
             else {
                 res.status(400).json({ "Error": 'Incorrect Credentials' })
@@ -72,8 +74,34 @@ router.get('/doctor/logout', auth, async (req, res) => {
     catch (e) {
         res.status(404).json(e)
     }
+})
+
+router.get('/doctor/:rno', auth, async (req, res) => {
+    try {
+        const regNo = req.params.rno
+
+        const doctor = await Doctor.findOne({ registrationNumber: regNo })
+        if (!doctor)
+            res.status(404).json({ "Error": "Invalid Credentials" })
+        else {
+            res.status(200).json({
+                'name': doctor.name,
+                'registrationNumber': doctor.registrationNumber,
+                'address': doctor.address,
+                'dob': doctor.dob,
+                'email': doctor.email,
+                'number': doctor.phoneNumber,
+                'college': doctor.college
+            })
+
+        }
+    }
+    catch (e) {
+        res.status(404).json(e)
+    }
 
 
 })
+
 
 module.exports = router

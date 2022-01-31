@@ -4,6 +4,10 @@
     padding:5rem 2rem;
 }
   
+.logout{
+    font-size: 2rem;
+    cursor: pointer;
+}
 
 .landing{
     height:100vh;
@@ -34,57 +38,6 @@
     opacity: 0.5;
     line-height: 30px;
     color:var(--gray2)
-}
-
-/* ABOUT CSS */
-
-.about{
-    padding: 50px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-}
-
-.aboutText{
-    padding: 0 50px;
-}
-
-.aboutText h1{
-    left: 110px;
-}
-
-.aboutText img{
-    width: 10vw;
-    top: 50px;
-}
-
-.aboutList{
-    width: 50%;
-}
-
-ol{
-    list-style: none;
-    color: #e0501b;
-}
-
-ol li{
-    font-size: 34px;
-    margin-bottom: 20px;
-    border-bottom: 1px solid #ebebeb;
-}
-
-li p{
-    font-size: 16px;
-    color: #000;
-    padding-left: 60px;
-    line-height: 30px;
-    opacity: 0.6;
-}
-
-li span{
-    line-height: 25px;
-    font-weight: 600;
 }
 
 /* INFO_SECTION CSS */

@@ -41,8 +41,8 @@ const DoctorLogin = () => {
       }
 
       if (res.status === 200) {
-        authCtx.login(dataRes);
-        navigate('/doctors')
+        authCtx.login(dataRes.token);
+        navigate(`/doctor/${dataRes.regnNo}`)
       }
     }
 

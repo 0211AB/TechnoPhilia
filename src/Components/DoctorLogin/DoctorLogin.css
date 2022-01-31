@@ -2,6 +2,7 @@
 
 input {
     font-family: "Poppins", sans-serif;
+    padding: 0 2rem;
   }
 
   .bg-img-doctor{
@@ -9,6 +10,7 @@ input {
     background:url('../../images/Medical\ prescription-amico.svg');
     background-repeat: no-repeat;
     backdrop-filter:initial;
+    margin-top: 7rem;
   }
 
   .signin-signup {

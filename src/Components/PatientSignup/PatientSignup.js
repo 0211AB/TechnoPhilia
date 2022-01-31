@@ -115,7 +115,7 @@ const PatientSignup = () => {
       identifcationMark: mark,
       height: height,
       weight: weight,
-      familyHistory: history
+      familyHistory: history,
     })
   }
 
@@ -281,7 +281,7 @@ const PatientSignup = () => {
                         onChange={markChangeHandler}
                         className="form-control"
                         placeholder="Please mention any birthmark/scar"
-                         />
+                      />
                     </fieldset>
                   </div>
                   <div className="form-holder">
@@ -292,7 +292,7 @@ const PatientSignup = () => {
                         onChange={historyChangeHandler}
                         className="form-control"
                         placeholder="Family Medical History(if any)"
-                        />
+                      />
                     </fieldset>
                   </div>
                 </div>
