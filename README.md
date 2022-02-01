@@ -1,8 +1,7 @@
-# Getting Started with Create React App
 
 ## Available Scripts
 
-In the project directory, you can run:
+## In the project directory, you can run:
 
 ### `npm install`
 
@@ -22,7 +21,7 @@ Launches the test runner in the interactive watch mode.\
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
-In the backend directory, you can run:
+## In the backend directory, you can run:
 
 ### `npm install`
 
