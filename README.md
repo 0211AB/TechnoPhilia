@@ -5,7 +5,7 @@
 <p>HealthVault aims to devlop the develop the backbone necessary to support integrated digital health infrastructure in the country and help citizens and healthcare providers manage health records digitally.</p>
 
 
-<h2 align="center">Screenshots</h2>
+<h2 align="center">Desktop Screenshots</h2>
 
 <p align="center">
 <img src="https://github.com/0211AB/TechnoPhilia/blob/main/Screenshots%20and%20Videos/Screenshot%20(84).png" />
